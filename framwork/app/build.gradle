@@ -42,7 +42,7 @@ android {
     //配置keystore签名
     signingConfigs {
         release {
-            storeFile file('../zhongwang.jks')
+            storeFile file('../muye.jks')
             keyAlias 'zhongwanglicaishi'
             keyPassword '123456'
             storePassword '123456'

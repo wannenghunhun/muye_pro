@@ -78,7 +78,7 @@
                 android:gravity="center"
                 android:textColor="@color/green_025F33"
                 android:textSize="13sp"
-                tools:text="退出" />
+                android:text="退出" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -404,7 +404,7 @@
                     android:layout_marginStart="8dp"
                     android:textColor="@color/black_FF333333"
                     android:textSize="12sp"
-                    tools:text="班组" />
+                    android:text="班组" />
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -412,7 +412,7 @@
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/icon_arrow_down"/>
             </LinearLayout>
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/home_layout_key"
                 android:layout_toRightOf="@+id/home_layout_type"
                 android:layout_width="wrap_content"
@@ -420,8 +420,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_toLeftOf="@+id/home_layout_state"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/button_cornor_gray"
-                android:orientation="horizontal">
+                android:background="@drawable/button_cornor_gray" >
                 <com.framwork.common.widget.ClearAbleEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -429,9 +428,11 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     android:hint="输入查询关键字"
+                    android:background="@null"
+                    android:textColor="@color/black_FF222222"
                     android:textColorHint="@color/gray_C6C8C8"
                     android:textSize="12sp" />
-            </LinearLayout>
+            </RelativeLayout>
             <LinearLayout
                 android:id="@+id/home_layout_state"
                 android:layout_width="wrap_content"
@@ -448,7 +449,7 @@
                     android:layout_marginStart="8dp"
                     android:textColor="@color/black_FF333333"
                     android:textSize="12sp"
-                    tools:text="在场" />
+                    android:text="在场" />
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -467,23 +468,5 @@
                 android:layout_centerVertical="true"
                 android:text="搜索"/>
         </RelativeLayout>
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/refreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="320dp">
-            <com.scwang.smartrefresh.layout.header.ClassicsHeader
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#fff"
-                android:overScrollMode="never" />
-            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srlClassicsSpinnerStyle="Translate"/>
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </ScrollView>
