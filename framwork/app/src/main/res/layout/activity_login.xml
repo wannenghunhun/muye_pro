@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="64dp"
-        android:src="@drawable/ic_logo" />
+        android:src="@drawable/icon_logo" />
 
     <ImageView
         android:id="@+id/login_img_appdes"
@@ -20,7 +20,7 @@
         android:layout_below="@+id/login_img_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:src="@drawable/ic_appdes" />
+        android:src="@drawable/icon_appdes" />
 
     <RelativeLayout
         android:id="@+id/login_layout_account"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:src="@drawable/ic_account" />
+            android:src="@drawable/icon_account" />
 
         <com.framwork.common.widget.ClearAbleEditText
             android:layout_width="match_parent"
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:src="@drawable/ic_password" />
+            android:src="@drawable/icon_password" />
 
         <com.framwork.common.widget.ClearAbleEditText
             android:layout_width="match_parent"
