@@ -17,11 +17,11 @@ public class ResultBean<T> implements Serializable {
     public static final String NET_ERROR = "-2"; // 网络访问错误
 
     public boolean isSuccess() {
-        return TextUtils.equals("0000", code);
+        return TextUtils.equals("0", code);
     }
 
     public boolean isEmpty() {
-        return TextUtils.equals("0000", code) && data == null;
+        return TextUtils.equals("0", code) && data == null;
     }
 
     public boolean isParseError() {
@@ -33,24 +33,13 @@ public class ResultBean<T> implements Serializable {
     }
 
     public boolean shouldReLogin() { //判断是否应该重新登录
-        return TextUtils.equals("9001", code);
+        return TextUtils.equals("403", code);
     }
 
     public boolean isFailure() {
-        return !(TextUtils.equals("0000", code));
+        return !(TextUtils.equals("0", code));
     }
 
-    /**
-     * 是否有注册资格
-     * @return
-     */
-    public boolean hasRegisterAuthorize() {
-        if ("9012".equals(code)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
     @Override
     public String toString() {

@@ -12,29 +12,13 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.FormBody;
+
 public class PostFormBuilder extends OkHttpRequestBuilder {
-    private List<FileInput> files = new ArrayList<>();
     
     @Override
     public RequestCall build() {
-        return new PostFormRequest(url, tag, params, headers, files).build();
-    }
-    
-    public PostFormBuilder addFile(String name, String filename, File file) {
-        files.add(new FileInput(name, filename, file));
-        return this;
-    }
-    
-    public static class FileInput {
-        public String key;
-        public String filename;
-        public File file;
-        
-        public FileInput(String name, String filename, File file) {
-            this.key = name;
-            this.filename = filename;
-            this.file = file;
-        }
+        return new PostFormRequest(url, tag, params, headers).build();
     }
     
     //

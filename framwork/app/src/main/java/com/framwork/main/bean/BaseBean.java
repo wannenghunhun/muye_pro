@@ -1,4 +1,4 @@
-package com.framwork.main.bean.common;
+package com.framwork.main.bean;
 
 import java.io.Serializable;
 

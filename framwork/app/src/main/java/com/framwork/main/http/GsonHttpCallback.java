@@ -82,7 +82,7 @@ public abstract class GsonHttpCallback<T> extends Callback<ResultBean<T>> {
 
     protected void onShouldReLogin(ResultBean<T> t) {
         ToastUtil.showToast(t.msg);
-//        LoginUtil.forceLogOut();
+        //        LoginUtil.forceLogOut();
     }
 
     protected abstract void response(ResultBean<T> t);

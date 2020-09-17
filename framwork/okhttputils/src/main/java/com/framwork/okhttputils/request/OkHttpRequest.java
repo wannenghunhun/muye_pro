@@ -5,6 +5,7 @@ import com.framwork.okhttputils.utils.Exceptions;
 
 import java.util.Map;
 
+import okhttp3.FormBody;
 import okhttp3.Headers;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -15,6 +16,7 @@ public abstract class OkHttpRequest {
     protected Object tag;
     protected Map<String, String> params;
     protected Map<String, String> headers;
+    protected FormBody param;
     
     
     protected Request.Builder builder = new Request.Builder();
@@ -24,6 +26,18 @@ public abstract class OkHttpRequest {
         this.url = url;
         this.tag = tag;
         this.params = params;
+        this.headers = headers;
+        
+        if(url == null) {
+            Exceptions.illegalArgument("url can not be null.");
+        }
+    }
+    
+    protected OkHttpRequest(String url, Object tag,
+                            FormBody param, Map<String, String> headers) {
+        this.url = url;
+        this.tag = tag;
+        this.param = param;
         this.headers = headers;
         
         if(url == null) {
@@ -75,6 +89,7 @@ public abstract class OkHttpRequest {
                 "url='" + url + '\'' +
                 ", tag=" + tag +
                 ", params=" + params +
+                ", param=" + param +
                 ", headers=" + headers +
                 '}';
     }

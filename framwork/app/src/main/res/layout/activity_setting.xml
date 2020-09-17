@@ -53,7 +53,7 @@
             android:textSize="13sp" />
 
         <com.framwork.common.widget.ClearAbleEditText
-            android:id="@+id/setting_et_softid"
+            android:id="@+id/setting_et_soft_id"
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_marginTop="8dp"
@@ -71,7 +71,7 @@
             android:textSize="13sp" />
 
         <com.framwork.common.widget.ClearAbleEditText
-            android:id="@+id/setting_et_logkey"
+            android:id="@+id/setting_et_log_key"
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_marginTop="8dp"
@@ -89,7 +89,7 @@
             android:textSize="13sp" />
 
         <com.framwork.common.widget.ClearAbleEditText
-            android:id="@+id/setting_et_face"
+            android:id="@+id/setting_et_face_server"
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_marginTop="8dp"

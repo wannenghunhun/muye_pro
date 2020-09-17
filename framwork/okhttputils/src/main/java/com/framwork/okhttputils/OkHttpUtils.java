@@ -117,7 +117,7 @@ public class OkHttpUtils {
         return new PostFileBuilder();
     }
 
-    public static PostFormBuilder post() {
+    public static PostFormBuilder postForm() {
         return new PostFormBuilder();
     }
 

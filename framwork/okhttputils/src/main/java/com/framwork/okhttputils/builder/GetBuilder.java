@@ -7,6 +7,8 @@ import com.framwork.okhttputils.request.RequestCall;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
+import okhttp3.FormBody;
+
 public class GetBuilder extends OkHttpRequestBuilder {
     @Override
     public RequestCall build() {
@@ -47,6 +49,7 @@ public class GetBuilder extends OkHttpRequestBuilder {
         this.params = params;
         return this;
     }
+    
 
     @Override
     public GetBuilder addParams(String key, String val) {

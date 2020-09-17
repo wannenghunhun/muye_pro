@@ -7,6 +7,7 @@ import java.io.File;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 
 public class PostFileBuilder extends OkHttpRequestBuilder {
@@ -47,7 +48,6 @@ public class PostFileBuilder extends OkHttpRequestBuilder {
         this.params = params;
         return this;
     }
-    
     @Override
     public PostFileBuilder addParams(String key, String val) {
         if(this.params == null) {

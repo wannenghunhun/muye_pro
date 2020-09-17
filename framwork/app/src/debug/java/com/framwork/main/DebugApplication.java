@@ -24,24 +24,24 @@ import okhttp3.OkHttpClient;
  *
  */
 public class DebugApplication extends MyApplication {
-
-
+    
+    
     @Override
-    protected void onceInstall() {
-        RouterDebugHelper.install(this);
-        super.onceInstall();
-        ACRAHelper.install(this);
-//        LeakCanaryHelper.install(this);
-//        BlockCanaryHelper.install(this);
-        StethoHelper.install(this);
+    protected void initInstall() {
+//        RouterDebugHelper.install(this);
+        super.initInstall();
+//        ACRAHelper.install(this);
+        //        LeakCanaryHelper.install(this);
+        //        BlockCanaryHelper.install(this);
+//        StethoHelper.install(this);
         addActivityLifeCycle(new ActivityLogLifecycle());
         addActivityLifeCycle(new ActivityServerConfigLifecycle());
         addFragmentLifeCycle(new FragmentLogLifecycle());
-//        addFragmentLifeCycle(new FragmentLeakCanaryLifecycle());
+        //        addFragmentLifeCycle(new FragmentLeakCanaryLifecycle());
         WebViewUtil.setWebContentsDebuggingEnabled();
         ServerHelper.init(ServerHelper.ServerTestType, new DebugServerConfig());
     }
-
+    
     @Override
     protected void initOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -53,6 +53,6 @@ public class DebugApplication extends MyApplication {
                 .addNetworkInterceptor(new ResponseDecryptInterceptor())
                 .addNetworkInterceptor(new ResponseGzipInterceptor());
         OkHttpUtils.init(builder, true);
-
+        
     }
 }
