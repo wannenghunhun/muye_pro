@@ -9,25 +9,18 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.framwork.common.ui.activity.BaseFragmentActivity;
-import com.framwork.common.utils.LogUtil;
-import com.framwork.common.utils.SPManager;
 import com.framwork.common.utils.ToastUtil;
 import com.framwork.common.widget.ClearAbleEditText;
-import com.framwork.main.GlobalConstants;
 import com.framwork.main.R;
 import com.framwork.main.bean.LoginBean;
-import com.framwork.main.http.ResultBean;
+import com.framwork.main.router.RouterConstants;
 import com.framwork.main.ui.contract.LoginContract;
 import com.framwork.main.ui.presenter.LoginPresenter;
+import com.framwork.main.util.LoginUtil;
 
-import java.io.IOException;
-
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
+@Route(path = RouterConstants.ROUTER_LOGIN, name = RouterConstants.ROUTER_LOGIN_KEY)
 public class LoginActivity extends BaseFragmentActivity<LoginContract.Presenter> implements LoginContract.View {
     private TextView login_tv_login, login_tv_setting;
     private ClearAbleEditText loginEtAccount;
@@ -129,7 +122,7 @@ public class LoginActivity extends BaseFragmentActivity<LoginContract.Presenter>
                 //                    ToastUtil.showToast("密码不能为空");
                 //                }
                 //                else {
-                                    presenter.goLogin("admin", "123456");
+                presenter.goLogin("admin", "123456");
                 //                }
             }
         });
@@ -138,16 +131,18 @@ public class LoginActivity extends BaseFragmentActivity<LoginContract.Presenter>
             public void onClick(View v) {
                 Intent i = new Intent(LoginActivity.this, SettingActivity.class);
                 startActivity(i);
+                finish();
             }
         });
     }
     
     @Override
-    public void logSuccess( LoginBean loginBean) {
+    public void logSuccess(LoginBean loginBean) {
         ToastUtil.showToast("登录成功！");
-        SPManager.getDefaultManager().commitString("token", loginBean.token);
+        LoginUtil.saveToken(loginBean.token);
         Intent i = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(i);
+        finish();
     }
     
 }

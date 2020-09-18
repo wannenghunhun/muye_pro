@@ -6,7 +6,6 @@ import android.support.annotation.StringDef;
 import com.framwork.common.helper.net.IServerConfig;
 import com.framwork.common.helper.net.ReleaseServerConfig;
 import com.framwork.common.utils.ExceptionUtil;
-import com.framwork.common.utils.LoginUtil;
 
 import java.lang.annotation.Retention;
 import java.util.IdentityHashMap;
@@ -77,7 +76,7 @@ public class ServerHelper {
         Map<String, String> headers = new IdentityHashMap<>();
         //        headers.put("Content-Type", "text/plain");
         //        headers.put("device", "android");
-        headers.put("token-zw", LoginUtil.getToken());
+//                headers.put("token", LoginUtil.getToken());
         //        headers.put("deviceVer", DeviceUtil.getDeviceType() + "[" + DeviceUtil.getSystemVersion() + "]");
         //        headers.put("appName", "zw");
         //        headers.put("platform", "app");

@@ -9,7 +9,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 public class PostStringRequest extends OkHttpRequest {
-    private static MediaType MEDIA_TYPE_PLAIN = MediaType.parse("text/plain;charset=utf-8");
+    private static MediaType MEDIA_TYPE_PLAIN = MediaType.parse("application/json;charset=utf-8");
     
     private String content;
     private MediaType mediaType;

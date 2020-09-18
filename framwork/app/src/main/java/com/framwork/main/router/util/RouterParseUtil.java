@@ -35,10 +35,10 @@ public class RouterParseUtil {
     private static Map<String, IAppRouter> routers = new HashMap<>();
     
     static {
-        routers.put(RouterConstants.ROUTER_CALLSERVICE_KEY, new CallPhoneRouter());
-        routers.put(RouterConstants.ROUTER_HOMEPAGE_KEY, new MainTabRouter());
-        routers.put(RouterConstants.ROUTER_WORKPAGE_KEY, new MainTabRouter());
-        routers.put(RouterConstants.ROUTER_MINEPAGE_KEY, new MainTabRouter());
+//        routers.put(RouterConstants.ROUTER_CALLSERVICE_KEY, new CallPhoneRouter());
+//        routers.put(RouterConstants.ROUTER_HOMEPAGE_KEY, new MainTabRouter());
+//        routers.put(RouterConstants.ROUTER_WORKPAGE_KEY, new MainTabRouter());
+//        routers.put(RouterConstants.ROUTER_MINEPAGE_KEY, new MainTabRouter());
 //        routers.put(RouterConstants.ROUTER_RECOMMENDPRJ_KEY, new MainTabRouter());
     }
     

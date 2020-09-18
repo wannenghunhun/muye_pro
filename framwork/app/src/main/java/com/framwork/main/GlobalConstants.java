@@ -23,8 +23,14 @@ public class GlobalConstants {
     
     //接口名管理类
     public static class InterfaceNameConstants {
-        //赚钱攻略 +可推荐项目
+        //登录
         public static final String LOGIN = "login";
+        //获取用户信息
+        public static final String USER_INFO = "user/info";
+        //获取项目信息接口
+        public static final String PROJECT_INFO = "project/";
+        //分页获取项目所属工人信息
+        public static final String PROJECT_EMPLOYEES = "project/employees";
         
     }
     

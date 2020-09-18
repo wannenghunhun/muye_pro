@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/item_employee_img_header"
+        android:layout_width="wrap_content"
+        android:layout_height="88dp"
+        android:src="@drawable/bg_userface" />
+
+    <TextView
+        android:id="@+id/item_employee_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/item_employee_img_header"
+        android:textColor="@color/black_FF333333"
+        android:textSize="15sp"
+        tools:text="名字" />
+
+    <ImageView
+        android:id="@+id/item_employee_img_editor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/item_employee_tv_name"
+        android:src="@drawable/icon_edit" />
+
+    <TextView
+        android:id="@+id/item_employee_tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_employee_tv_name"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/item_employee_img_header"
+        android:textColor="@color/black_FF333333"
+        android:textSize="15sp"
+        tools:text="手机号" />
+
+    <TextView
+        android:id="@+id/item_employee_tv_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_employee_tv_phone"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/item_employee_img_header"
+        android:textColor="@color/c_999999"
+        android:textSize="12sp"
+        tools:text="公司" />
+
+    <TextView
+        android:id="@+id/item_employee_tv_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_employee_tv_unit"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toEndOf="@+id/item_employee_img_header"
+        android:textColor="@color/c_999999"
+        android:textSize="12sp"
+        tools:text="班组" />
+
+    <TextView
+        android:id="@+id/item_employee_tv_duty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/green_0F7B3B"
+        android:textSize="15sp"
+        tools:text="职位" />
+
+    <TextView
+        android:id="@+id/item_employee_tv_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/item_employee_tv_group"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/green_0F7B3B"
+        android:textSize="15sp"
+        tools:text="状态" />
+</RelativeLayout>
