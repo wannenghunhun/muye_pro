@@ -65,7 +65,7 @@ public class HomePresenter extends HomeContract.Presenter {
     @Override
     public void getProjectInfo(String id) {
         Map<String, String> params = new HashMap<>();
-        RestClient.postWithParam(GlobalConstants.InterfaceNameConstants.PROJECT_INFO, params, id, new GsonHttpCallback<ProjectInfoBean>() {
+        RestClient.postWithParam(GlobalConstants.InterfaceNameConstants.PROJECT, params, id, new GsonHttpCallback<ProjectInfoBean>() {
             @Override
             public void onBefore(Request request) {
                 if(isViewAttached()) {

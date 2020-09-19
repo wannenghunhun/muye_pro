@@ -4,6 +4,7 @@ import com.framwork.common.utils.LogUtil;
 import com.framwork.main.GlobalConstants;
 import com.framwork.main.util.LoginUtil;
 import com.framwork.okhttputils.OkHttpUtils;
+import com.framwork.okhttputils.builder.GetBuilder;
 import com.framwork.okhttputils.builder.PostFormBuilder;
 import com.framwork.okhttputils.builder.PostStringBuilder;
 
@@ -43,7 +44,7 @@ public class RestClient {
     }
     
     /**
-     * 表单的post请求
+     * 拼接参数的post请求
      *
      * @param params
      * @param callback
@@ -52,6 +53,18 @@ public class RestClient {
         String url = GlobalConstants.URLConstants.BASE_URL + interfaceName + param;
         PostFormBuilder postFormBuilder = OkHttpUtils.postForm().url(url).params(params).headers(commonHeaders());
         postFormBuilder.build().execute(callback);
+        LogUtil.e("--->请求URL: %s \n--->请求接口名: %s \n--->请求数据:-- %s", url, interfaceName, params);
+    }
+    /**
+     * 拼接参数的get请求
+     *
+     * @param params
+     * @param callback
+     */
+    public static void getWithParam(String interfaceName, Map<String, String> params, String param, GsonHttpCallback callback) {
+        String url = GlobalConstants.URLConstants.BASE_URL + interfaceName + param;
+        GetBuilder getBuilder =OkHttpUtils.get().url(url).params(params).headers(commonHeaders());
+        getBuilder.build().execute(callback);
         LogUtil.e("--->请求URL: %s \n--->请求接口名: %s \n--->请求数据:-- %s", url, interfaceName, params);
     }
     

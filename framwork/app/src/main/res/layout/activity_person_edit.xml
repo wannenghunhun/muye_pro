@@ -53,7 +53,7 @@
         <RelativeLayout
             android:id="@+id/person_edit_layout_pro"
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="wrap_content"
             android:background="@color/green_0F7B3B">
 
             <TextView
@@ -83,6 +83,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:textColor="@color/green_C5F0DC"
+                android:layout_marginBottom="8dp"
                 tools:text="中关村生命科学园三期及北四村棚户区改造和环境整治安置房项目C组团工程" />
 
         </RelativeLayout>
@@ -144,11 +145,9 @@
 
             <ImageView
                 android:id="@+id/person_edit_img_face"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:src="@drawable/bg_userface" />
+                android:layout_width="wrap_content"
+                android:layout_height="160dp"
+                android:layout_margin="8dp" />
 
         </LinearLayout>
 
@@ -267,6 +266,7 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/person_edit_layout_sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -292,10 +292,11 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_edit_tv_sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="男"
+                    tools:text="男"
                     android:textColor="@color/black_FF333333"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -345,6 +346,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/person_edit_birthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -366,7 +368,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/person_edit_tv_date"
+                android:id="@+id/person_edit_tv_birthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -480,6 +482,7 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/person_edit_layout_zhengzhi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -506,10 +509,11 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_edit_tv_zhengzhi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="中共党员"
+                    tools:text="中共党员"
                     android:textColor="@color/black_FF333333"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -524,6 +528,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/person_edit_layout_jiguan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -550,10 +555,11 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_edit_tv_jiguan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="河北省"
+                    tools:text="河北省"
                     android:textColor="@color/black_FF333333"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -568,6 +574,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/person_edit_layout_wenhua"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -594,10 +601,11 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_edit_tv_wenhua"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="小学"
+                    tools:text="小学"
                     android:textColor="@color/black_FF333333"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -612,6 +620,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/person_edit_layout_leader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -638,10 +647,11 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_edit_tv_leader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="是"
+                    tools:text="是"
                     android:textColor="@color/black_FF333333"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -656,6 +666,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/person_edit_layout_peixun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -682,10 +693,11 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_edit_tv_peixun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="是"
+                    tools:text="是"
                     android:textColor="@color/black_FF333333"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -700,6 +712,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/person_edit_layout_chizheng"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -726,10 +739,11 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_edit_tv_chizheng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="是"
+                    tools:text="是"
                     android:textColor="@color/black_FF333333"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -836,13 +850,15 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/person_edit_layout_unit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_toLeftOf="@+id/person_edit_layout_unit_img"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -862,15 +878,17 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_edit_tv_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="中国新兴"
+                    tools:text="中国新兴"
                     android:textColor="@color/black_FF333333"
                     android:textSize="14sp" />
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/person_edit_layout_unit_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -880,13 +898,15 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/person_edit_layout_team"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_toLeftOf="@+id/person_edit_layout_team_img"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -906,15 +926,17 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_edit_tv_team"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="钢结构班组"
+                    tools:text="钢结构班组"
                     android:textColor="@color/black_FF333333"
                     android:textSize="14sp" />
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/person_edit_layout_team_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -924,6 +946,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/person_edit_layout_role"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -950,10 +973,11 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_edit_tv_role"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="工人"
+                    tools:text="工人"
                     android:textColor="@color/black_FF333333"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -968,6 +992,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/person_edit_layout_worktype"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -994,10 +1019,11 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_edit_tv_worktype"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="电工"
+                    tools:text="电工"
                     android:textColor="@color/black_FF333333"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -1018,6 +1044,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/person_edit_tv_fanchang"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="16dp"
@@ -1029,6 +1056,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/person_edit_tv_addinfo"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="2"

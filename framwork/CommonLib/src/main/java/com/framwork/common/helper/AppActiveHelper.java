@@ -25,7 +25,7 @@ public class AppActiveHelper {
     private static boolean count_start = false;
     private static int mActivityCount;
 
-    private static final long EXIT_TIME = 60 * 1000L;// 毫秒  60S
+    private static final long EXIT_TIME = 60000000 * 1000L;// 毫秒  60S
 
     public static <T extends Application> void install(T application) {
         registerReceiver(application);

@@ -2,6 +2,7 @@ package com.framwork.main.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,33 +10,23 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.framwork.common.adapter.recycleview.SimpleRecycleParentListAdapter;
 import com.framwork.common.adapter.recycleview.SimpleRecycleParentViewHolder;
-import com.framwork.common.utils.CollectionUtil;
-import com.framwork.common.utils.LoadingUtil;
 import com.framwork.common.utils.ResUtil;
-import com.framwork.common.utils.ToastUtil;
-import com.framwork.main.GlobalConstants;
 import com.framwork.main.R;
 import com.framwork.main.bean.EmployeesBean;
-import com.framwork.main.http.RestClient;
-import com.framwork.main.router.util.RouterParseUtil;
 import com.framwork.main.ui.activity.PersonEditActivity;
 import com.framwork.main.util.ImageUtil;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Request;
 
 
 public class EmployeesAdapter extends SimpleRecycleParentListAdapter<EmployeesBean.employe> {
     Context context;
+    String projectId;
     
-    public EmployeesAdapter(Context c) {
+    public EmployeesAdapter(Context c, String projectId) {
         super(R.layout.item_employee);
         this.context = c;
+        this.projectId = projectId;
     }
     
     
@@ -64,8 +55,11 @@ public class EmployeesAdapter extends SimpleRecycleParentListAdapter<EmployeesBe
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, PersonEditActivity.class);
+                Bundle b = new Bundle();
+                b.putString("projectId", projectId);
+                b.putString("id", item.id);
+                i.putExtras(b);
                 context.startActivity(i);
-                
             }
         });
         

@@ -50,8 +50,8 @@ public class MyApplication extends Application {
         GlobalTools.installLog(BuildConfig.SHOW_LOG);
         addActivityLifeCycle(new DLRActivityLifecycle());
         addFragmentLifeCycle(new DLRFragmentLifecycle());
-        ServerHelper.init(ServerHelper.ServerReleaseType, new ReleaseServerConfig());
-        AppActiveHelper.install(this);
+//        ServerHelper.init(ServerHelper.ServerReleaseType, new ReleaseServerConfig());
+//        AppActiveHelper.install(this);
         initOkHttpClient();
         initParam();
     }

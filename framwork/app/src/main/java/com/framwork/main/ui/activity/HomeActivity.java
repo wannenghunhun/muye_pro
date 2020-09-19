@@ -56,10 +56,13 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
     private ClearAbleEditText mHomeEtSearch;
     private int index_pro = 0;
     private int index_type = 0;
-    private int index_state = 0;
+    private int index_state = 1;
     private int total = 0;
     private int pageSize = 20;
-    private String searchKdy = "", type, state;
+    private String searchKey = "", type, state;
+    private EmployeeListFragment employeeListFragment;
+    private UserInfoBean userInfoBean;
+    private ProjectInfoBean projectInfo;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +123,6 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
         popupWindow_type = new PopupWindow(popView_type);
         popView_state = View.inflate(this, R.layout.view_popupwindow, null);
         popupWindow_state = new PopupWindow(popView_state);
-        setFragment();
         setOnClick();
         setView();
         setEdit();
@@ -130,8 +132,10 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
     protected void initData(@NonNull Bundle bundle) {
     }
     
-    private void setFragment() {
-        getSupportFragmentManager().beginTransaction().add(R.id.home_fragment_list, new EmployeeListFragment(), "PersonList").commit();
+    private void setFragment(String projectID) {
+        employeeListFragment = EmployeeListFragment.newInstance(projectID);
+        getSupportFragmentManager().beginTransaction().add(R.id.home_fragment_list, employeeListFragment, "EmployeeList").commit();
+        
     }
     
     private void setOnClick() {
@@ -174,7 +178,7 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
             public void onClick(View v) {
                 //关键字类型 0-名称 1-单位 2-班组
                 //订单状态：0-离岗 1-在岗 默认在岗
-                presenter.getEmployeesInfo("", 0, "8", 1, 1, pageSize);
+                employeeListFragment.reqData(searchKey, index_type, userInfoBean.projects.get(index_pro).id, index_state);
             }
         });
     }
@@ -238,8 +242,8 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
         types.add("班组");
         setPopupWindow("选择类型", mHomeTvType, types, popupWindow_type, popView_type, 1);
         ArrayList<String> states = new ArrayList<>();
-        states.add("在场");
         states.add("离场");
+        states.add("在场");
         setPopupWindow("选择状态", mHomeTvState, states, popupWindow_state, popView_state, 2);
     }
     
@@ -252,7 +256,7 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
             
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                searchKdy = mHomeEtSearch.getText().toString();
+                searchKey = mHomeEtSearch.getText().toString();
             }
             
             @Override
@@ -270,6 +274,7 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
     
     @Override
     public void setUserInfo(UserInfoBean userInfo) {
+        this.userInfoBean = userInfo;
         mHomeTvName.setText(userInfo.name);
         mHomeTvDate.setText(userInfo.date);
         mHomeTvWeek.setText(userInfo.week);
@@ -279,11 +284,13 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
             pro_names.add(userInfo.projects.get(i).name);
         }
         setPopupWindow("选择项目", mHomeTvProName, pro_names, popupWindow_pro, popView_pro, 0);
+        setFragment(userInfo.projects.get(0).id);
         presenter.getProjectInfo(userInfo.projects.get(0).id);
     }
     
     @Override
     public void setProjectInfo(ProjectInfoBean projectInfo) {
+        this.projectInfo = projectInfo;
         mHomeTvUnit.setText(projectInfo.project.generalUnit);
         mHomeTvAddress.setText(projectInfo.project.address);
         mHomeTvManager.setText(projectInfo.project.manager);

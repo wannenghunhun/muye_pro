@@ -28,10 +28,13 @@ public class GlobalConstants {
         //获取用户信息
         public static final String USER_INFO = "user/info";
         //获取项目信息接口
-        public static final String PROJECT_INFO = "project/";
+        public static final String PROJECT = "project/";
         //分页获取项目所属工人信息
         public static final String PROJECT_EMPLOYEES = "project/employees";
-        
+        //获取项目雇员选项信息
+        public static final String CONDITIONS = "/conditions";// project/{projectId}/conditions
+        //获取人员基本信息
+        public static final String EMPLOYEE = "employee/";// project/employee/{id}
     }
     
 }
