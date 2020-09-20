@@ -129,7 +129,7 @@ public class LoginActivity extends BaseFragmentActivity<LoginContract.Presenter>
                 //                    ToastUtil.showToast("密码不能为空");
                 //                }
                 //                else {
-                                    presenter.goLogin("admin", "123456");
+                presenter.goLogin("admin", "123456");
                 //                }
             }
         });
@@ -143,9 +143,9 @@ public class LoginActivity extends BaseFragmentActivity<LoginContract.Presenter>
     }
     
     @Override
-    public void logSuccess( LoginBean loginBean) {
+    public void logSuccess(LoginBean loginBean) {
         ToastUtil.showToast("登录成功！");
-        SPManager.getDefaultManager().commitString("token", loginBean.token);
+        SPManager.getDefaultManager().commitString("token", "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjAwMzYxMjgzLCJleHAiOjE2MDE1NzA4ODMsIm5hbWUiOiJhZG1pbiJ9.6K2kdLyeRjGq_bTeqQKucE5hT-dWsJjxHxV-CZEvgjU");
         Intent i = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(i);
     }
