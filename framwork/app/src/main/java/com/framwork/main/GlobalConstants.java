@@ -35,6 +35,14 @@ public class GlobalConstants {
         public static final String CONDITIONS = "/conditions";// project/{projectId}/conditions
         //获取人员基本信息
         public static final String EMPLOYEE = "employee/";// project/employee/{id}
+        //编辑项目人员
+        public static final String PROJECT_EMPLOYEE_EDIT = "project/employee/edit";
+        //增加项目人员
+        public static final String PROJECT_EMPLOYEE_ADD = "project/employee/add";
+        //人员返场
+        public static final String RETURN = "/return";// /project/employee/{id}/return
+        //人员离场
+        public static final String OUT = "/out";// /project/employee/{id}/out
     }
     
 }

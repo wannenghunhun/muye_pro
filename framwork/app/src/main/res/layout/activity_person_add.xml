@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="人员采集"
+                android:text="人员编辑"
                 android:textColor="@color/white"
                 android:textSize="19sp"
                 android:textStyle="bold" />
@@ -53,7 +53,7 @@
         <RelativeLayout
             android:id="@+id/person_add_layout_pro"
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="wrap_content"
             android:background="@color/green_0F7B3B">
 
             <TextView
@@ -82,6 +82,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
                 android:textColor="@color/green_C5F0DC"
                 tools:text="中关村生命科学园三期及北四村棚户区改造和环境整治安置房项目C组团工程" />
 
@@ -105,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
-                android:text="人员采集"
+                android:text="人员编辑"
                 android:textColor="@color/black_FF333333"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -136,31 +137,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/person_add_layout_info"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="16dp"
-            android:background="@drawable/button_stoken_green"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_collect_green" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="采集信息"
-                android:textColor="@color/green_025F33"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/person_add_layout_pic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -170,16 +146,22 @@
                 android:id="@+id/person_add_img_face"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:layout_margin="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_weight="1"
+                android:scaleType="fitXY"
                 android:src="@drawable/bg_userface" />
 
             <ImageView
                 android:id="@+id/person_add_img_id"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:layout_margin="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_weight="1"
+                android:scaleType="fitXY"
                 android:src="@drawable/bg_userface" />
         </LinearLayout>
 
@@ -298,10 +280,11 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:layout_marginTop="16dp"
+            android:id="@+id/person_add_layout_sex"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -323,12 +306,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_add_tv_sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="男"
                     android:textColor="@color/black_FF333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="男" />
             </LinearLayout>
 
             <ImageView
@@ -376,6 +360,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/person_add_birthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -397,7 +382,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/person_add_tv_date"
+                android:id="@+id/person_add_tv_birthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -509,11 +494,13 @@
                 android:textColorHint="@color/gray_C6C8C8"
                 android:textSize="14sp" />
         </LinearLayout>
+
         <RelativeLayout
-            android:layout_marginTop="16dp"
+            android:id="@+id/person_add_layout_zhengzhi"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -521,7 +508,7 @@
                 android:orientation="horizontal">
 
 
-            <TextView
+                <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="政治面貌"
@@ -536,12 +523,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_add_tv_zhengzhi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="中共党员"
                     android:textColor="@color/black_FF333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="中共党员" />
             </LinearLayout>
 
             <ImageView
@@ -552,11 +540,13 @@
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_marginTop="16dp"
+            android:id="@+id/person_add_layout_jiguan"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -564,7 +554,7 @@
                 android:orientation="horizontal">
 
 
-            <TextView
+                <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="籍贯"
@@ -579,12 +569,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_add_tv_jiguan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="河北省"
                     android:textColor="@color/black_FF333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="河北省" />
             </LinearLayout>
 
             <ImageView
@@ -595,11 +586,13 @@
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_marginTop="16dp"
+            android:id="@+id/person_add_layout_wenhua"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -607,7 +600,7 @@
                 android:orientation="horizontal">
 
 
-            <TextView
+                <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="文化程度"
@@ -622,12 +615,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_add_tv_wenhua"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="小学"
                     android:textColor="@color/black_FF333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="小学" />
             </LinearLayout>
 
             <ImageView
@@ -638,11 +632,13 @@
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_marginTop="16dp"
+            android:id="@+id/person_add_layout_leader"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -650,7 +646,7 @@
                 android:orientation="horizontal">
 
 
-            <TextView
+                <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="班组长"
@@ -665,12 +661,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_add_tv_leader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="是"
                     android:textColor="@color/black_FF333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="是" />
             </LinearLayout>
 
             <ImageView
@@ -681,11 +678,13 @@
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_marginTop="16dp"
+            android:id="@+id/person_add_layout_peixun"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -693,7 +692,7 @@
                 android:orientation="horizontal">
 
 
-            <TextView
+                <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="参加培训"
@@ -708,12 +707,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_add_tv_peixun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="是"
                     android:textColor="@color/black_FF333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="是" />
             </LinearLayout>
 
             <ImageView
@@ -724,11 +724,13 @@
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_marginTop="16dp"
+            android:id="@+id/person_add_layout_chizheng"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -736,7 +738,7 @@
                 android:orientation="horizontal">
 
 
-            <TextView
+                <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="持证上岗"
@@ -751,12 +753,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_add_tv_chizheng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="是"
                     android:textColor="@color/black_FF333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="是" />
             </LinearLayout>
 
             <ImageView
@@ -767,6 +770,7 @@
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -800,6 +804,7 @@
                 android:textColorHint="@color/gray_C6C8C8"
                 android:textSize="14sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -833,6 +838,7 @@
                 android:textColorHint="@color/gray_C6C8C8"
                 android:textSize="14sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -856,15 +862,18 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <RelativeLayout
-            android:layout_marginTop="16dp"
+            android:id="@+id/person_add_layout_unit"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/person_add_layout_unit_img"
                 android:orientation="horizontal">
 
 
@@ -883,15 +892,17 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_add_tv_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="中国新兴"
                     android:textColor="@color/black_FF333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="中国新兴" />
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/person_add_layout_unit_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -899,15 +910,18 @@
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_marginTop="16dp"
+            android:id="@+id/person_add_layout_team"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/person_add_layout_team_img"
                 android:orientation="horizontal">
 
 
@@ -926,15 +940,17 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_add_tv_team"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="钢结构班组"
                     android:textColor="@color/black_FF333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="钢结构班组" />
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/person_add_layout_team_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -942,11 +958,13 @@
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_marginTop="16dp"
+            android:id="@+id/person_add_layout_role"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -969,12 +987,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_add_tv_role"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="工人"
                     android:textColor="@color/black_FF333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="工人" />
             </LinearLayout>
 
             <ImageView
@@ -985,11 +1004,13 @@
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_marginTop="16dp"
+            android:id="@+id/person_add_layout_worktype"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -1012,12 +1033,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/person_add_tv_worktype"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="电工"
                     android:textColor="@color/black_FF333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="电工" />
             </LinearLayout>
 
             <ImageView
@@ -1028,15 +1050,36 @@
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
-        <TextView
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:gravity="center"
-            android:background="@drawable/button_cornor"
-            android:textColor="@color/white"
-            android:text="添加人员信息"
-            android:textSize="16sp"
-            />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/person_add_tv_fanchang"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_cornor_red"
+                android:gravity="center"
+                android:text="人员返场"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/person_add_tv_addinfo"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_cornor"
+                android:gravity="center"
+                android:text="添加人员信息"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -24,6 +25,7 @@ import com.bigkoo.pickerview.listener.OnOptionsSelectChangeListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.framwork.common.ui.activity.BaseFragmentActivity;
 import com.framwork.common.widget.ClearAbleEditText;
+import com.framwork.main.EditEvent;
 import com.framwork.main.R;
 import com.framwork.main.bean.ProjectInfoBean;
 import com.framwork.main.bean.UserInfoBean;
@@ -31,6 +33,10 @@ import com.framwork.main.ui.contract.HomeContract;
 import com.framwork.main.ui.fragment.EmployeeListFragment;
 import com.framwork.main.ui.presenter.HomePresenter;
 import com.framwork.main.util.LoginUtil;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
@@ -71,6 +77,7 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
     }
     
     @Override
@@ -86,6 +93,7 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
     @Override
     public void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
     
     @Override
@@ -147,6 +155,8 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(HomeActivity.this, PersonAddActivity.class);
+                Bundle b=new Bundle();
+                b.putString("projectId",userInfoBean.projects.get(index_pro).id);
                 startActivity(i);
             }
         });
@@ -303,4 +313,8 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
         mHomeTvProState.setText(projectInfo.project.status);
     }
     
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveEvent(EditEvent message) {
+        employeeListFragment.reqData(searchKey, index_type, userInfoBean.projects.get(index_pro).id, index_state);
+    }
 }

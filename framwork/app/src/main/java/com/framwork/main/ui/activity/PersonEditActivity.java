@@ -21,8 +21,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.framwork.common.ui.activity.BaseFragmentActivity;
+import com.framwork.common.utils.ToastUtil;
 import com.framwork.common.widget.ClearAbleEditText;
+import com.framwork.main.EditEvent;
 import com.framwork.main.R;
+import com.framwork.main.bean.BaseBean;
 import com.framwork.main.bean.ConditionsBean;
 import com.framwork.main.bean.EmployeeBean;
 import com.framwork.main.bean.UserInfoBean;
@@ -30,6 +33,8 @@ import com.framwork.main.ui.contract.PersonEditContract;
 import com.framwork.main.ui.presenter.PersonEditPresenter;
 import com.framwork.main.util.ImageUtil;
 import com.framwork.main.util.LoginUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -43,8 +48,8 @@ public class PersonEditActivity extends BaseFragmentActivity<PersonEditContract.
     private TextView mPersonEditTvProName;
     private LinearLayout mPersonEditLayoutProTitle;
     private LinearLayout mPersonEditLayoutVerify;
-    private LinearLayout mPersonEditLayoutPic;
     private ImageView mPersonEditImgFace;
+    private ImageView mPersonEditImgId;
     private LinearLayout mPersonEditLayoutRight;
     private LinearLayout mPersonEditLayoutWrong;
     private ClearAbleEditText mPersonEditEtName;
@@ -92,6 +97,15 @@ public class PersonEditActivity extends BaseFragmentActivity<PersonEditContract.
     
     private ConditionsBean conditionsBean;
     private UserInfoBean userInfo;
+    private EmployeeBean employeeBean;
+    private ArrayList<String> zhengzhiList = new ArrayList<>();
+    private ArrayList<String> jiguanList = new ArrayList<>();
+    private ArrayList<String> wenhuaList = new ArrayList<>();
+    private ArrayList<String> unitList = new ArrayList<>();
+    private ArrayList<String> teamList = new ArrayList<>();
+    private ArrayList<String> roleList = new ArrayList<>();
+    private ArrayList<String> workTypeList = new ArrayList<>();
+    private ArrayList<String> pro_names = new ArrayList<>();
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +136,6 @@ public class PersonEditActivity extends BaseFragmentActivity<PersonEditContract.
     protected void loadData() {
         presenter.getConditionsInfo(projectId);
         presenter.getUserInfo();
-        presenter.getEmployeeInfo(id);
     }
     
     @Override
@@ -136,8 +149,8 @@ public class PersonEditActivity extends BaseFragmentActivity<PersonEditContract.
         mPersonEditTvProName = findViewById(R.id.person_edit_tv_pro_name);
         mPersonEditLayoutProTitle = findViewById(R.id.person_edit_layout_pro_title);
         mPersonEditLayoutVerify = findViewById(R.id.person_edit_layout_verify);
-        mPersonEditLayoutPic = findViewById(R.id.person_edit_layout_pic);
         mPersonEditImgFace = findViewById(R.id.person_edit_img_face);
+        mPersonEditImgId = findViewById(R.id.person_edit_img_id);
         mPersonEditLayoutRight = findViewById(R.id.person_edit_layout_right);
         mPersonEditLayoutWrong = findViewById(R.id.person_edit_layout_wrong);
         mPersonEditEtName = findViewById(R.id.person_edit_et_name);
@@ -302,6 +315,24 @@ public class PersonEditActivity extends BaseFragmentActivity<PersonEditContract.
                 popShow(popupWindow_pro, popView_pro);
             }
         });
+        mPersonEditTvAddinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.editEmployeesInfo(id, employeeBean.employee.idPhotoPath, employeeBean.employee.photoPath, "老七",
+                        employeeBean.employee.idCard, employeeBean.employee.sex, employeeBean.employee.birthday, employeeBean.employee.nation,
+                        employeeBean.employee.address, employeeBean.employee.tel, employeeBean.employee.politicalStatus, employeeBean.employee.nativePlace,
+                        employeeBean.employee.education, employeeBean.employee.ifForeman, employeeBean.employee.ifTrain, employeeBean.employee.ifCertificate,
+                        projectId, employeeBean.employee.unitId, employeeBean.employee.teamId, employeeBean.employee.roleType, employeeBean.employee.workType,
+                        employeeBean.employee.age, employeeBean.employee.certificateSn, employeeBean.employee.contractSn
+                );
+            }
+        });
+        mPersonEditTvFanchang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.employeeBack(id);
+            }
+        });
     }
     
     private void setEdit() {
@@ -428,31 +459,31 @@ public class PersonEditActivity extends BaseFragmentActivity<PersonEditContract.
         ArrayList<String> booleanList = new ArrayList<>();
         booleanList.add("是");
         booleanList.add("否");
-        ArrayList<String> zhengzhiList = new ArrayList<>();
+        zhengzhiList = new ArrayList<>();
         for(int i = 0; i < conditionsBean.politicalStatus.size(); i++) {
             zhengzhiList.add(conditionsBean.politicalStatus.get(i).value);
         }
-        ArrayList<String> jiguanList = new ArrayList<>();
+        jiguanList = new ArrayList<>();
         for(int i = 0; i < conditionsBean.provinces.size(); i++) {
             jiguanList.add(conditionsBean.provinces.get(i).value);
         }
-        ArrayList<String> wenhuaList = new ArrayList<>();
+        wenhuaList = new ArrayList<>();
         for(int i = 0; i < conditionsBean.education.size(); i++) {
             wenhuaList.add(conditionsBean.education.get(i).value);
         }
-        ArrayList<String> unitList = new ArrayList<>();
+        unitList = new ArrayList<>();
         for(int i = 0; i < conditionsBean.units.size(); i++) {
             unitList.add(conditionsBean.units.get(i).name);
         }
-        ArrayList<String> teamList = new ArrayList<>();
+        teamList = new ArrayList<>();
         for(int i = 0; i < conditionsBean.teams.size(); i++) {
             teamList.add(conditionsBean.teams.get(i).name);
         }
-        ArrayList<String> roleList = new ArrayList<>();
+        roleList = new ArrayList<>();
         for(int i = 0; i < conditionsBean.roles.size(); i++) {
             roleList.add(conditionsBean.roles.get(i).name);
         }
-        ArrayList<String> workTypeList = new ArrayList<>();
+        workTypeList = new ArrayList<>();
         for(int x = 0; x < conditionsBean.types.get(0).value.size(); x++) {
             workTypeList.add(conditionsBean.types.get(0).value.get(x).name);
         }
@@ -467,12 +498,13 @@ public class PersonEditActivity extends BaseFragmentActivity<PersonEditContract.
         setPopupWindow("所属班组", mPersonEditTvTeam, teamList, popupWindow_team, popView_team, 8);
         setPopupWindow("角色", mPersonEditTvRole, roleList, popupWindow_role, popView_role, 9);
         setPopupWindow("工种", mPersonEditTvWorktype, workTypeList, popupWindow_worktype, popView_worktype, 10);
+        presenter.getEmployeeInfo(id);
     }
     
     @Override
     public void setProjectInfo(UserInfoBean userInfo) {
         this.userInfo = userInfo;
-        ArrayList<String> pro_names = new ArrayList<>();
+        pro_names = new ArrayList<>();
         for(int i = 0; i < userInfo.projects.size(); i++) {
             pro_names.add(userInfo.projects.get(i).name);
         }
@@ -482,7 +514,9 @@ public class PersonEditActivity extends BaseFragmentActivity<PersonEditContract.
     
     @Override
     public void setEmployeeInfo(EmployeeBean employeeBean) {
+        this.employeeBean = employeeBean;
         Glide.with(PersonEditActivity.this).load(employeeBean.employee.photoPath).apply(ImageUtil.getRequestOptions()).into(mPersonEditImgFace);
+        Glide.with(PersonEditActivity.this).load(employeeBean.employee.idPhotoPath).apply(ImageUtil.getRequestOptions()).into(mPersonEditImgId);
         mPersonEditEtName.setText(employeeBean.employee.name);
         mPersonEditEtId.setText(employeeBean.employee.idCard);
         mPersonEditTvSex.setText(employeeBean.employee.sex);
@@ -496,10 +530,47 @@ public class PersonEditActivity extends BaseFragmentActivity<PersonEditContract.
         mPersonEditTvLeader.setText(employeeBean.employee.ifForeman);
         mPersonEditTvPeixun.setText(employeeBean.employee.ifTrain);
         mPersonEditTvChizheng.setText(employeeBean.employee.ifCertificate);
-        //        mPersonEditTvUnit.setText(employeeBean.employee.u);
-        //        mPersonEditTvTeam.setText(employeeBean.employee.u);
-        //        mPersonEditTvRole.setText(employeeBean.employee.u);
-        //        mPersonEditTvWorktype.setText(employeeBean.employee.u);
+        mPersonEditEtHetong.setText(employeeBean.employee.contractSn);
+        mPersonEditEtZhengshu.setText(employeeBean.employee.certificateSn);
+        for(int i = 0; i < conditionsBean.units.size(); i++) {
+            if(employeeBean.employee.unitId.equals(conditionsBean.units.get(i).id)) {
+                mPersonEditTvUnit.setText(conditionsBean.units.get(i).name);
+            }
+            
+        }
+        for(int i = 0; i < conditionsBean.teams.size(); i++) {
+            if(employeeBean.employee.teamId.equals(conditionsBean.teams.get(i).id)) {
+                mPersonEditTvTeam.setText(conditionsBean.teams.get(i).name);
+            }
+            
+        }
+        for(int i = 0; i < conditionsBean.roles.size(); i++) {
+            if(employeeBean.employee.roleType.equals(conditionsBean.roles.get(i).id)) {
+                mPersonEditTvRole.setText(conditionsBean.roles.get(i).name);
+            }
+            
+        }
+        for(int i = 0; i < conditionsBean.types.size(); i++) {
+            for(int x = 0; x < conditionsBean.types.get(i).value.size(); x++) {
+                if(employeeBean.employee.workType.equals(conditionsBean.types.get(i).value.get(x).id)) {
+                    mPersonEditTvWorktype.setText(conditionsBean.types.get(i).value.get(x).name);
+                }
+            }
+            
+        }
+        //        if(employeeBean.employee.returnStatus) {
+        //            mPersonEditTvFanchang.setVisibility(View.VISIBLE);
+        //        }
+        //        else {
+        //            mPersonEditTvFanchang.setVisibility(View.GONE);
+        //        }
+    }
+    
+    @Override
+    public void editResult(String s) {
+        ToastUtil.showToast(s);
+        finish();
+        EventBus.getDefault().post(new EditEvent());
     }
     
 }

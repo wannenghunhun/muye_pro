@@ -28,6 +28,8 @@ public class EmployeeBean extends BaseBean {
         public String workType;
         public boolean returnStatus;
         public String age;
+        public String certificateSn;
+        public String contractSn;
     }
     
 }

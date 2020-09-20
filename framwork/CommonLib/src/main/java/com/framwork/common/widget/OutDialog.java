@@ -2,6 +2,7 @@ package com.framwork.common.widget;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -16,13 +17,13 @@ import com.framwork.common.R;
  */
 public class OutDialog extends Dialog {
     
-    private Activity context;
+    private Context context;
     
     private TextView setting_btn_cancel, setting_btn_confirm;
     
     private OnConfirmClickListener onConfirmClickListener;
     
-    public OutDialog(Activity context, OnConfirmClickListener onConfirmClickListener) {
+    public OutDialog(Context context, OnConfirmClickListener onConfirmClickListener) {
         super(context);
         this.context = context;
         this.onConfirmClickListener = onConfirmClickListener;
@@ -46,6 +47,7 @@ public class OutDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 onConfirmClickListener.onConfirmClick();
+                dismiss();
             }
         });
         setOnKeyListener(new OnKeyListener() {

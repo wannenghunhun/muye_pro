@@ -120,6 +120,7 @@ public class EmployeeListFragment extends BaseRefreshFragment<PersonListContract
             }
             loadComplete();
         }
-        
     }
+    
+    
 }

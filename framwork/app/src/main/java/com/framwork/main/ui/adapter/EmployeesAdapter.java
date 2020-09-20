@@ -10,13 +10,30 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.framwork.common.adapter.recycleview.SimpleRecycleParentListAdapter;
 import com.framwork.common.adapter.recycleview.SimpleRecycleParentViewHolder;
+import com.framwork.common.utils.LoadingUtil;
 import com.framwork.common.utils.ResUtil;
+import com.framwork.common.utils.ToastUtil;
+import com.framwork.common.widget.LoadingDialog;
+import com.framwork.common.widget.OutDialog;
+import com.framwork.main.EditEvent;
+import com.framwork.main.GlobalConstants;
 import com.framwork.main.R;
+import com.framwork.main.bean.BaseBean;
 import com.framwork.main.bean.EmployeesBean;
+import com.framwork.main.http.GsonHttpCallback;
+import com.framwork.main.http.RestClient;
+import com.framwork.main.http.ResultBean;
+import com.framwork.main.ui.activity.LoginActivity;
 import com.framwork.main.ui.activity.PersonEditActivity;
 import com.framwork.main.util.ImageUtil;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import okhttp3.Request;
 
 
 public class EmployeesAdapter extends SimpleRecycleParentListAdapter<EmployeesBean.employe> {
@@ -48,6 +65,46 @@ public class EmployeesAdapter extends SimpleRecycleParentListAdapter<EmployeesBe
         }
         else if(1 == item.status) {//zai场
             item_employee_tv_state.setBackground(ResUtil.getDrawable(R.drawable.icon_on));
+            item_employee_tv_state.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    OutDialog outDialog = new OutDialog(context, new OutDialog.OnConfirmClickListener() {
+                        @Override
+                        public void onConfirmClick() {
+                            Map<String, String> params = new HashMap<>();
+                            RestClient.postWithParam(GlobalConstants.InterfaceNameConstants.PROJECT + GlobalConstants.InterfaceNameConstants.EMPLOYEE, params,
+                                    item.id + GlobalConstants.InterfaceNameConstants.OUT, new GsonHttpCallback<BaseBean>() {
+                                        @Override
+                                        public void onBefore(Request request) {
+                                            LoadingUtil.showLoading(context);
+                                        }
+                                        
+                                        @Override
+                                        public void onAfter() {
+                                            LoadingUtil.dismissLoading(context);
+                                        }
+                                        
+                                        @Override
+                                        protected void error(ResultBean<BaseBean> t) {
+                                            ToastUtil.showToast(t.msg);
+                                        }
+                                        
+                                        @Override
+                                        protected void response(ResultBean<BaseBean> t) {
+                                            ToastUtil.showToast(t.msg);
+                                            EventBus.getDefault().post(new EditEvent());
+                                        }
+                                        
+                                        @Override
+                                        protected void onNetFail(ResultBean<BaseBean> t) {
+                                            ToastUtil.showNetError();
+                                        }
+                                    });
+                        }
+                    });
+                    outDialog.show();
+                }
+            });
         }
         
         ImageView item_employee_img_editor = viewHolder.findViewById(R.id.item_employee_img_editor);

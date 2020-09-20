@@ -22,7 +22,5 @@ public interface HomeContract {
         public abstract void getUserInfo();
         
         public abstract void getProjectInfo(String id);
-        
-        public abstract void getEmployeesInfo(String key, int keyType, String projectId, int status, int pageNum, int pageSize) ;
     }
 }
