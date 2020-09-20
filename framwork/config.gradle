@@ -83,7 +83,7 @@ ext {
             eventbus            : 'org.greenrobot:eventbus:3.1.1',
             wechat              : 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+',
             // https://github.com/Bigkoo/Android-PickerView
-            PickView            : 'com.contrarywind:Android-PickerView:4.1.7',
+            PickView            : 'com.contrarywind:Android-PickerView:4.1.9',
             // https://github.com/Curzibn/Luban
             Luban               : 'top.zibin:Luban:1.1.8',
             WheelView           : 'com.wx.wheelview:wheelview:1.3.3'

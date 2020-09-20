@@ -35,11 +35,11 @@ public class DebugApplication extends MyApplication {
         //        BlockCanaryHelper.install(this);
 //        StethoHelper.install(this);
         addActivityLifeCycle(new ActivityLogLifecycle());
-        addActivityLifeCycle(new ActivityServerConfigLifecycle());
+//        addActivityLifeCycle(new ActivityServerConfigLifecycle());
         addFragmentLifeCycle(new FragmentLogLifecycle());
         //        addFragmentLifeCycle(new FragmentLeakCanaryLifecycle());
-        WebViewUtil.setWebContentsDebuggingEnabled();
-        ServerHelper.init(ServerHelper.ServerTestType, new DebugServerConfig());
+//        WebViewUtil.setWebContentsDebuggingEnabled();
+//        ServerHelper.init(ServerHelper.ServerTestType, new DebugServerConfig());
     }
     
     @Override

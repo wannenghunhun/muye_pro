@@ -1,24 +1,19 @@
 package com.framwork.main.http;
 
-import android.app.Activity;
-
-import com.framwork.common.helper.ServerHelper;
 import com.framwork.common.utils.LogUtil;
-import com.framwork.common.utils.LoginUtil;
 import com.framwork.main.GlobalConstants;
+import com.framwork.main.util.LoginUtil;
 import com.framwork.okhttputils.OkHttpUtils;
+import com.framwork.okhttputils.builder.GetBuilder;
 import com.framwork.okhttputils.builder.PostFormBuilder;
 import com.framwork.okhttputils.builder.PostStringBuilder;
-import com.framwork.okhttputils.callback.FileCallBack;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
-import okhttp3.FormBody;
 import okhttp3.MediaType;
 
 
@@ -31,8 +26,8 @@ public class RestClient {
      * @param params
      * @param callback
      */
-    public static void postWithTag(Object o, String interfaceName, JSONObject params, GsonHttpCallback callback) {
-        basePost(o, GlobalConstants.URLConstants.BASE_URL + interfaceName, params, interfaceName, callback);
+    public static void postWithTag(String interfaceName, JSONObject params, GsonHttpCallback callback) {
+        basePost(GlobalConstants.URLConstants.BASE_URL + interfaceName, params, interfaceName, callback);
     }
     
     /**
@@ -43,23 +38,44 @@ public class RestClient {
      */
     public static void postWithForm(String interfaceName, Map<String, String> params, GsonHttpCallback callback) {
         String url = GlobalConstants.URLConstants.BASE_URL + interfaceName;
-        PostFormBuilder postFormBuilder = OkHttpUtils.postForm().url(url).params(params);
+        PostFormBuilder postFormBuilder = OkHttpUtils.postForm().url(url).params(params).headers(commonHeaders());
         postFormBuilder.build().execute(callback);
         LogUtil.e("--->请求URL: %s \n--->请求接口名: %s \n--->请求数据:-- %s", url, interfaceName, params);
     }
     
+    /**
+     * 拼接参数的post请求
+     *
+     * @param params
+     * @param callback
+     */
+    public static void postWithParam(String interfaceName, Map<String, String> params, String param, GsonHttpCallback callback) {
+        String url = GlobalConstants.URLConstants.BASE_URL + interfaceName + param;
+        PostFormBuilder postFormBuilder = OkHttpUtils.postForm().url(url).params(params).headers(commonHeaders());
+        postFormBuilder.build().execute(callback);
+        LogUtil.e("--->请求URL: %s \n--->请求接口名: %s \n--->请求数据:-- %s", url, interfaceName, params);
+    }
+    /**
+     * 拼接参数的get请求
+     *
+     * @param params
+     * @param callback
+     */
+    public static void getWithParam(String interfaceName, Map<String, String> params, String param, GsonHttpCallback callback) {
+        String url = GlobalConstants.URLConstants.BASE_URL + interfaceName + param;
+        GetBuilder getBuilder =OkHttpUtils.get().url(url).params(params).headers(commonHeaders());
+        getBuilder.build().execute(callback);
+        LogUtil.e("--->请求URL: %s \n--->请求接口名: %s \n--->请求数据:-- %s", url, interfaceName, params);
+    }
     
-    private static void basePost(Object activity, String url, JSONObject
+    
+    private static void basePost(String url, JSONObject
             params, String interfaceName, GsonHttpCallback callback) {
-        String realParams = getParams(url, params, interfaceName);
         PostStringBuilder postStringBuilder = OkHttpUtils.postString()
                 .url(url)
-                .mediaType(MediaType.parse("application/x-www-form-urlencoded"))
-                .headers(ServerHelper.headers(url, interfaceName))
+                .mediaType(MediaType.parse("application/json"))
+                .headers(commonHeaders())
                 .content(params.toString());
-        if(activity != null) {
-            postStringBuilder.tag(activity);
-        }
         LogUtil.e("--->请求URL: %s \n--->请求接口名: %s \n--->请求数据:-- %s", url, interfaceName, params.toString());
         postStringBuilder.build().execute(callback);
         
@@ -69,13 +85,6 @@ public class RestClient {
     private static Map<String, String> commonHeaders() {
         Map<String, String> headers = new IdentityHashMap<>();
         headers.put("token", LoginUtil.getToken());
-        //                headers.put("Content-Type", "app/plain");
-        //        headers.put("device", "android");
-        //        headers.put("deviceVer", DeviceUtil.getDeviceType() + "[" + DeviceUtil.getSystemVersion() + "]");
-        //        headers.put("appName", "zw");
-        //        headers.put("platform", "app");
-        //        headers.put("appMarket", ChannelUtils.getChannel());
-        //        headers.put("appVer", AppUtil.getVersionName());
         return headers;
     }
     
