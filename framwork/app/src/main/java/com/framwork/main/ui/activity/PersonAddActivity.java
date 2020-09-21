@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,13 +22,16 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.framwork.common.ui.activity.BaseFragmentActivity;
+import com.framwork.common.utils.ResUtil;
 import com.framwork.common.utils.ToastUtil;
 import com.framwork.common.widget.ClearAbleEditText;
 import com.framwork.main.EditEvent;
 import com.framwork.main.R;
 import com.framwork.main.bean.ConditionsBean;
-import com.framwork.main.bean.EmployeeBean;
 import com.framwork.main.bean.UserInfoBean;
 import com.framwork.main.ui.contract.PersonAddContract;
 import com.framwork.main.ui.presenter.PersonAddPresenter;
@@ -34,7 +39,10 @@ import com.framwork.main.util.LoginUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Presenter> implements PersonAddContract.View {
     private RelativeLayout mPersonAddLayoutTitle;
@@ -55,7 +63,7 @@ public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Pr
     private RelativeLayout mPersonAddLayoutSex;
     private TextView mPersonAddTvSex;
     private ClearAbleEditText mPersonAddEtMinzu;
-    private LinearLayout mPersonAddBirthday;
+    private LinearLayout mPersonAddLayoutBirthday;
     private TextView mPersonAddTvBirthday;
     private ClearAbleEditText mPersonAddEtAddress;
     private ClearAbleEditText mPersonAddEtPhone;
@@ -90,8 +98,8 @@ public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Pr
             popupWindow_chizheng, popupWindow_unit, popupWindow_team, popupWindow_role, popupWindow_worktype, popupWindow_pro;
     private View popView_sex, popView_zhengzhi, popView_jiguan, popView_wenhua, popView_leader, popView_peixun,
             popView_chizheng, popView_unit, popView_team, popView_role, popView_pro, popView_worktype;
-    private int index_sex, index_zhengzhi, index_jiguan, index_wenhua, index_leader, index_peixun,
-            index_chizheng, index_unit, index_team, index_role, index_worktype, index_pro;
+    private int index_sex = 0, index_zhengzhi = 0, index_jiguan = 0, index_wenhua = 0, index_leader = 0, index_peixun = 0,
+            index_chizheng = 0, index_unit = 0, index_team = 0, index_role = 0, index_worktype = 0, index_pro;
     
     private ConditionsBean conditionsBean;
     private UserInfoBean userInfo;
@@ -103,8 +111,8 @@ public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Pr
     private ArrayList<String> roleList = new ArrayList<>();
     private ArrayList<String> workTypeList = new ArrayList<>();
     private ArrayList<String> pro_names = new ArrayList<>();
-    
-    private String person_add_unitId, person_add_teamId, person_add_roleType, person_add_workType;
+    private TimePickerView pvTime;
+    private String person_add_unitId = "", person_add_teamId = "", person_add_roleType = "", person_add_workType = "";
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +165,7 @@ public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Pr
         mPersonAddLayoutSex = findViewById(R.id.person_add_layout_sex);
         mPersonAddTvSex = findViewById(R.id.person_add_tv_sex);
         mPersonAddEtMinzu = findViewById(R.id.person_add_et_minzu);
-        mPersonAddBirthday = findViewById(R.id.person_add_birthday);
+        mPersonAddLayoutBirthday = findViewById(R.id.person_add_layout_birthday);
         mPersonAddTvBirthday = findViewById(R.id.person_add_tv_birthday);
         mPersonAddEtAddress = findViewById(R.id.person_add_et_address);
         mPersonAddEtPhone = findViewById(R.id.person_add_et_phone);
@@ -209,7 +217,7 @@ public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Pr
         popupWindow_worktype = new PopupWindow(popView_worktype);
         popView_pro = View.inflate(this, R.layout.view_popupwindow, null);
         popupWindow_pro = new PopupWindow(popView_pro);
-        
+        setPickView();
         setOnclick();
         setEdit();
     }
@@ -222,6 +230,42 @@ public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Pr
     private void hideSoftKeyBoard() {
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getWindowToken(), 0);
+    }
+    
+    private void setPickView() {
+        Calendar selectedDate = Calendar.getInstance();
+        Calendar startDate = Calendar.getInstance();
+        Calendar endDate = Calendar.getInstance();
+        startDate.set(1940, 0, 1);
+        selectedDate.set(2000, 0, 1);
+        
+        pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {//选中事件回调
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String format = simpleDateFormat.format(date);
+                mPersonAddTvBirthday.setText(format);
+            }
+        })
+                .setType(new boolean[]{true, true, true, false, false, false})// 默认全部显示
+                .setCancelText("取消")//取消按钮文字
+                .setSubmitText("确定")//确认按钮文字
+                //                .setTitleSize(16)//标题文字大小
+                //                .setTitleText("Title")//标题文字
+                //                .setTitleColor(Color.BLACK)//标题文字颜色
+                .setTitleBgColor(ResUtil.getColor(R.color.white))//标题背景颜色
+                .setBgColor(ResUtil.getColor(R.color.white))//滚轮背景颜色
+                .setContentTextSize(16)//滚轮文字大小
+                .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
+                .isCyclic(true)//是否循环滚动
+                .setSubmitColor(ResUtil.getColor(R.color.red_E51010))//确定按钮文字颜色
+                .setCancelColor(ResUtil.getColor(R.color.green_015F33))//取消按钮文字颜色
+                .setDate(selectedDate)// 如果不设置的话，默认是系统时间*/
+                .setRangDate(startDate, endDate)//起始终止年月日设定
+                //                .setLabel("年", "月", "日")//默认设置为年月日时分秒
+                .isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
+                .isDialog(false)//是否显示为对话框样式
+                .build();
     }
     
     private void setOnclick() {
@@ -313,20 +357,47 @@ public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Pr
                 popShow(popupWindow_pro, popView_pro);
             }
         });
+        mPersonAddLayoutBirthday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideSoftKeyBoard();
+                pvTime.show();
+            }
+        });
         mPersonAddTvAddinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TextUtils.isEmpty(phone)) {
+                if(TextUtils.isEmpty(name)) {
+                    ToastUtil.showToast("请填写正确的姓名");
+                }
+                else if(TextUtils.isEmpty(id_number)) {
+                    ToastUtil.showToast("请填写正确的身份证号");
+                }
+                else if(TextUtils.isEmpty(mPersonAddTvSex.getText().toString())) {
+                    ToastUtil.showToast("请选择正确的性别");
+                }
+                else if(TextUtils.isEmpty(minzu)) {
+                    ToastUtil.showToast("请填写正确的民族");
+                }
+                else if(TextUtils.isEmpty(mPersonAddTvBirthday.getText().toString())) {
+                    ToastUtil.showToast("请选择正确的出生日期");
+                }
+                else if(TextUtils.isEmpty(address)) {
+                    ToastUtil.showToast("请填写正确的住址");
+                }
+                else if(TextUtils.isEmpty(phone)) {
+                    ToastUtil.showToast("请填写正确的手机号码");
+                }
+                else if(!phone.matches("^[1]\\d{10}$")) {
                     ToastUtil.showToast("请填写正确的手机号码");
                 }
                 else {
-                    presenter.addEmployeesInfo("", "employeeBean.employee.idPhotoPath", "employeeBean.employee.photoPath", name,
+                    presenter.addEmployeesInfo("", "", "", name,
                             id_number, mPersonAddTvSex.getText().toString(), mPersonAddTvBirthday.getText().toString(), minzu,
                             address, phone, mPersonAddTvZhengzhi.getText().toString(), mPersonAddTvJiguan.getText().toString(),
                             mPersonAddTvWenhua.getText().toString(), mPersonAddTvLeader.getText().toString(), mPersonAddTvPeixun.getText().toString(),
-                            mPersonAddTvChizheng.getText().toString(), projectId, conditionsBean.units.get(index_unit).id, conditionsBean.teams.get(index_team).id,
-                            conditionsBean.types.get(index_role).id, conditionsBean.types.get(index_role).value.get(index_worktype).id,
-                            "30", zhengshu_number, hetong_number
+                            mPersonAddTvChizheng.getText().toString(), projectId, person_add_unitId, person_add_teamId,
+                            person_add_roleType, person_add_workType, "", zhengshu_number, hetong_number
                     );
                 }
             }
@@ -355,12 +426,15 @@ public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Pr
             }
         };
         mPersonAddEtName.addTextChangedListener(textWatcher);
-        mPersonAddEtId.addTextChangedListener(textWatcher);
+        mPersonAddEtId.setFilters(new InputFilter[]{new InputFilter.LengthFilter(18)});
         mPersonAddEtMinzu.addTextChangedListener(textWatcher);
         mPersonAddEtAddress.addTextChangedListener(textWatcher);
         mPersonAddEtPhone.addTextChangedListener(textWatcher);
+        mPersonAddEtPhone.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
+        mPersonAddEtPhone.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
         mPersonAddEtZhengshu.addTextChangedListener(textWatcher);
         mPersonAddEtHetong.addTextChangedListener(textWatcher);
+        
     }
     
     private void popShow(PopupWindow popupWindow, View view) {
@@ -415,21 +489,26 @@ public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Pr
                         break;
                     case 7:
                         index_unit = arg2;
+                        person_add_unitId = conditionsBean.units.get(index_unit).id;
                         break;
                     case 8:
                         index_team = arg2;
+                        person_add_teamId = conditionsBean.teams.get(index_team).id;
                         break;
                     case 9:
                         index_role = arg2;
+                        person_add_roleType = conditionsBean.types.get(index_role).id;
                         ArrayList<String> workTypeList = new ArrayList<>();
                         for(int x = 0; x < conditionsBean.types.get(index_role).value.size(); x++) {
                             workTypeList.add(conditionsBean.types.get(index_role).value.get(x).name);
                         }
                         setPopupWindow("工种", mPersonAddTvWorktype, workTypeList, popupWindow_worktype, popView_worktype, 10);
                         mPersonAddTvWorktype.setText(workTypeList.get(0));
+                        person_add_workType = conditionsBean.types.get(index_role).value.get(0).id;
                         break;
                     case 10:
                         index_worktype = arg2;
+                        person_add_workType = conditionsBean.types.get(index_role).value.get(index_worktype).id;
                         break;
                     case 11:
                         index_pro = arg2;
@@ -437,7 +516,6 @@ public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Pr
                 }
             }
         });
-        //popupWindow消失屏幕变为不透明
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
@@ -487,15 +565,29 @@ public class PersonAddActivity extends BaseFragmentActivity<PersonAddContract.Pr
         }
         setPopupWindow("性别", mPersonAddTvSex, sexList, popupWindow_sex, popView_sex, 0);
         setPopupWindow("政治面貌", mPersonAddTvZhengzhi, zhengzhiList, popupWindow_zhengzhi, popView_zhengzhi, 1);
+        mPersonAddTvZhengzhi.setText(zhengzhiList.get(0));
         setPopupWindow("籍贯", mPersonAddTvJiguan, jiguanList, popupWindow_jiguan, popView_jiguan, 2);
+        mPersonAddTvJiguan.setText(jiguanList.get(0));
         setPopupWindow("文化程度", mPersonAddTvWenhua, wenhuaList, popupWindow_wenhua, popView_wenhua, 3);
+        mPersonAddTvWenhua.setText(wenhuaList.get(0));
         setPopupWindow("班组长", mPersonAddTvLeader, booleanList, popupWindow_leader, popView_leader, 4);
+        mPersonAddTvLeader.setText(booleanList.get(0));
         setPopupWindow("参加培训", mPersonAddTvPeixun, booleanList, popupWindow_peixun, popView_peixun, 5);
+        mPersonAddTvPeixun.setText(booleanList.get(0));
         setPopupWindow("持证上岗", mPersonAddTvChizheng, booleanList, popupWindow_chizheng, popView_chizheng, 6);
+        mPersonAddTvChizheng.setText(booleanList.get(0));
         setPopupWindow("所属单位", mPersonAddTvUnit, unitList, popupWindow_unit, popView_unit, 7);
+        mPersonAddTvUnit.setText(unitList.get(0));
+        person_add_unitId = conditionsBean.units.get(0).id;
         setPopupWindow("所属班组", mPersonAddTvTeam, teamList, popupWindow_team, popView_team, 8);
+        mPersonAddTvTeam.setText(teamList.get(0));
+        person_add_teamId = conditionsBean.teams.get(0).id;
         setPopupWindow("角色", mPersonAddTvRole, roleList, popupWindow_role, popView_role, 9);
+        mPersonAddTvRole.setText(roleList.get(0));
+        person_add_roleType = conditionsBean.types.get(0).id;
         setPopupWindow("工种", mPersonAddTvWorktype, workTypeList, popupWindow_worktype, popView_worktype, 10);
+        mPersonAddTvWorktype.setText(workTypeList.get(0));
+        person_add_workType = conditionsBean.types.get(0).value.get(0).id;
     }
     
     @Override

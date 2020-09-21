@@ -2,12 +2,10 @@ package com.framwork.main.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -20,9 +18,6 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
-import com.bigkoo.pickerview.listener.OnOptionsSelectChangeListener;
-import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.framwork.common.ui.activity.BaseFragmentActivity;
 import com.framwork.common.widget.ClearAbleEditText;
 import com.framwork.main.EditEvent;
@@ -155,8 +150,9 @@ public class HomeActivity extends BaseFragmentActivity<HomeContract.Presenter> i
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(HomeActivity.this, PersonAddActivity.class);
-                Bundle b=new Bundle();
-                b.putString("projectId",userInfoBean.projects.get(index_pro).id);
+                Bundle b = new Bundle();
+                b.putString("projectId", userInfoBean.projects.get(index_pro).id);
+                i.putExtras(b);
                 startActivity(i);
             }
         });

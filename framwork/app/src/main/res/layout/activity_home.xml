@@ -10,8 +10,8 @@
     <RelativeLayout
         android:id="@+id/home_layout_top"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:background="@color/green_025F33">
+        android:layout_height="48dp"
+        android:background="@color/green_015F33">
 
         <ImageView
             android:id="@+id/home_img_logo"
@@ -24,7 +24,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/home_img_logo"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
             android:layout_toLeftOf="@+id/home_tv_logout"
             android:layout_toRightOf="@+id/home_img_logo"
             android:orientation="horizontal">
@@ -75,7 +76,7 @@
             android:background="@drawable/button_cornor_white"
             android:gravity="center"
             android:text="退出"
-            android:textColor="@color/green_025F33"
+            android:textColor="@color/green_015F33"
             android:textSize="13sp" />
     </RelativeLayout>
 
@@ -112,9 +113,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:textColor="@color/green_C5F0DC"
-            android:textSize="16sp"
+            android:textSize="15sp"
             tools:text="中关村生命科学园三期及北四村棚户区改造和环境整治安置房项目C组团工程" />
 
     </RelativeLayout>
@@ -125,7 +126,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/home_layout_pro"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp">
 
         <LinearLayout
             android:id="@+id/home_layout_pro_title"
@@ -343,7 +345,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:orientation="horizontal">
 
@@ -390,7 +392,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
                 android:text="人员录入"
-                android:textColor="@color/green_025F33"
+                android:textColor="@color/green_015F33"
                 android:textSize="13sp" />
         </LinearLayout>
     </RelativeLayout>

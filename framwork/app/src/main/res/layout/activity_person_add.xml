@@ -16,7 +16,7 @@
             android:id="@+id/person_add_layout_title"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@color/green_025F33">
+            android:background="@color/green_015F33">
 
             <ImageView
                 android:id="@+id/person_add_img_back"
@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="人员编辑"
+                android:text="人员采集"
                 android:textColor="@color/white"
                 android:textSize="19sp"
                 android:textStyle="bold" />
@@ -46,7 +46,7 @@
                 android:background="@drawable/button_cornor_white"
                 android:gravity="center"
                 android:text="退出"
-                android:textColor="@color/green_025F33"
+                android:textColor="@color/green_015F33"
                 android:textSize="13sp" />
         </RelativeLayout>
 
@@ -131,7 +131,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
                 android:text="实名认证"
-                android:textColor="@color/green_025F33"
+                android:textColor="@color/green_015F33"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -145,7 +145,7 @@
             <ImageView
                 android:id="@+id/person_add_img_face"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="240dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -156,7 +156,7 @@
             <ImageView
                 android:id="@+id/person_add_img_id"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="240dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -184,7 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="人证对比通过"
-                android:textColor="@color/green_025F33"
+                android:textColor="@color/green_015F33"
                 android:textSize="15sp" />
         </LinearLayout>
 
@@ -213,10 +213,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp">
 
             <TextView
                 android:layout_width="100dp"
@@ -247,10 +251,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp">
 
             <TextView
                 android:layout_width="100dp"
@@ -282,13 +290,17 @@
         <RelativeLayout
             android:id="@+id/person_add_layout_sex"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:paddingStart="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
                 <TextView
@@ -320,16 +332,20 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp">
 
             <TextView
                 android:layout_width="100dp"
@@ -360,12 +376,16 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/person_add_birthday"
+            android:id="@+id/person_add_layout_birthday"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp">
 
             <TextView
                 android:layout_width="100dp"
@@ -396,10 +416,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp">
 
             <TextView
                 android:layout_width="100dp"
@@ -448,17 +472,21 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
                 android:text="补充信息"
-                android:textColor="@color/green_025F33"
+                android:textColor="@color/green_015F33"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp">
 
             <TextView
                 android:layout_width="8dp"
@@ -498,13 +526,17 @@
         <RelativeLayout
             android:id="@+id/person_add_layout_zhengzhi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:paddingStart="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
 
@@ -537,20 +569,24 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/person_add_layout_jiguan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:paddingStart="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
 
@@ -583,20 +619,24 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/person_add_layout_wenhua"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:paddingStart="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
 
@@ -629,20 +669,24 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/person_add_layout_leader"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:paddingStart="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
 
@@ -673,22 +717,26 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/person_add_layout_peixun"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:paddingStart="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
 
@@ -720,21 +768,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/person_add_layout_chizheng"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:paddingStart="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
 
@@ -767,16 +819,20 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp">
 
             <TextView
                 android:layout_width="100dp"
@@ -807,10 +863,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp">
 
             <TextView
                 android:layout_width="100dp"
@@ -858,7 +918,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
                 android:text="项目信息"
-                android:textColor="@color/green_025F33"
+                android:textColor="@color/green_015F33"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -866,13 +926,17 @@
         <RelativeLayout
             android:id="@+id/person_add_layout_unit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:paddingStart="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/person_add_layout_unit_img"
                 android:orientation="horizontal">
 
@@ -907,20 +971,24 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/person_add_layout_team"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:paddingStart="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/person_add_layout_team_img"
                 android:orientation="horizontal">
 
@@ -953,22 +1021,26 @@
                 android:id="@+id/person_add_layout_team_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/person_add_layout_role"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:paddingStart="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
 
@@ -1001,20 +1073,24 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/person_add_layout_worktype"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_cornor_gray_f9"
+            android:paddingStart="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
 
@@ -1047,7 +1123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
@@ -1066,9 +1142,9 @@
                 android:background="@drawable/button_cornor_red"
                 android:gravity="center"
                 android:text="人员返场"
-                android:visibility="gone"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/person_add_tv_addinfo"

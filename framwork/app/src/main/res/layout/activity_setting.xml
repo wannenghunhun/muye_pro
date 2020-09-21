@@ -111,7 +111,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/button_stoken_green"
                 android:text="取消"
-                android:textColor="@color/green_025F33"
+                android:textColor="@color/green_015F33"
                 android:textSize="15sp" />
 
             <Button

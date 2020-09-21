@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:scrollbars="none"
         tools:listitem="@layout/item_employee" />
 </RelativeLayout>

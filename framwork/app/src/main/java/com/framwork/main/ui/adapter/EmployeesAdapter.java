@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -13,7 +14,6 @@ import com.framwork.common.adapter.recycleview.SimpleRecycleParentViewHolder;
 import com.framwork.common.utils.LoadingUtil;
 import com.framwork.common.utils.ResUtil;
 import com.framwork.common.utils.ToastUtil;
-import com.framwork.common.widget.LoadingDialog;
 import com.framwork.common.widget.OutDialog;
 import com.framwork.main.EditEvent;
 import com.framwork.main.GlobalConstants;
@@ -23,7 +23,6 @@ import com.framwork.main.bean.EmployeesBean;
 import com.framwork.main.http.GsonHttpCallback;
 import com.framwork.main.http.RestClient;
 import com.framwork.main.http.ResultBean;
-import com.framwork.main.ui.activity.LoginActivity;
 import com.framwork.main.ui.activity.PersonEditActivity;
 import com.framwork.main.util.ImageUtil;
 
@@ -108,7 +107,8 @@ public class EmployeesAdapter extends SimpleRecycleParentListAdapter<EmployeesBe
         }
         
         ImageView item_employee_img_editor = viewHolder.findViewById(R.id.item_employee_img_editor);
-        item_employee_img_editor.setOnClickListener(new View.OnClickListener() {
+        RelativeLayout item_employee_layout_img = viewHolder.findViewById(R.id.item_employee_layout_img);
+        item_employee_layout_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, PersonEditActivity.class);

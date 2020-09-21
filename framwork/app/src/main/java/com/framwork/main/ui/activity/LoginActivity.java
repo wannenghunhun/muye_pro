@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.framwork.common.ui.activity.BaseFragmentActivity;
-import com.framwork.common.utils.ToastUtil;
 import com.framwork.common.widget.ClearAbleEditText;
 import com.framwork.main.R;
 import com.framwork.main.bean.LoginBean;
@@ -103,18 +102,6 @@ public class LoginActivity extends BaseFragmentActivity<LoginContract.Presenter>
         login_tv_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //                SuccessDialog successDialog = new SuccessDialog(LoginActivity.this, "shishi");
-                //                successDialog.show();
-                //                OutDialog outDialog = new OutDialog(LoginActivity.this, new OutDialog.OnConfirmClickListener() {
-                //                    @Override
-                //                    public void onConfirmClick() {
-                //                        ToastUtil.showToast("fdsfsafdadf");
-                //                    }
-                //                });
-                //                outDialog.show();
-                //                Intent i =new Intent(LoginActivity.this,HomeActivity.class);
-                //                startActivity(i);
-                //                LogUtil.e("appid=" + SPManager.getManager("param").getString("APP_ID"), "");
                 //                if(TextUtils.isEmpty(account)) {
                 //                    ToastUtil.showToast("账号不能为空");
                 //                }
@@ -138,7 +125,6 @@ public class LoginActivity extends BaseFragmentActivity<LoginContract.Presenter>
     
     @Override
     public void logSuccess(LoginBean loginBean) {
-        ToastUtil.showToast("登录成功！");
         LoginUtil.saveToken(loginBean.token);
         Intent i = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(i);

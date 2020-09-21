@@ -54,6 +54,7 @@
     <color name="gray_C6C8C8">#C6C8C8</color>
     <color name="gray_EFEFEF">#EFEFEF</color>
     <color name="gray_666666">#666666</color>
+    <color name="gray_F9F9F9">#FFF9F9F9</color>
 
     <!--black-->
     <color name="black_FF414141">#FF414141</color>
@@ -79,7 +80,7 @@
     <color name="green_5EAB0B">#5EAB0B</color>
     <color name="green_00612E">#FF00612E</color>
     <color name="green_C3D300">#FFC3D300</color>
-    <color name="green_025F33">#025F33</color>
+    <color name="green_015F33">#015F33</color>
     <color name="green_0F7B3B">#0F7B3B</color>
     <color name="green_A1C3B3">#A1C3B3</color>
     <color name="green_B9C81B">#B9C81B</color>
@@ -119,7 +120,7 @@
     <color name="divider_gray">#F2F4F6</color>
     <color name="black_FF555555">#FF555555</color>
     <color name="red_FFFE6528">#FFFE6528</color>
-    
+
     <color name="red">#F32735</color>
     <color name="shadow">#99000000</color>
     <color name="c_606266">#606266</color>
