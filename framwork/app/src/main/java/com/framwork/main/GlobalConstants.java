@@ -1,6 +1,8 @@
 package com.framwork.main;
 
 
+import com.framwork.common.utils.SPManager;
+
 public class GlobalConstants {
     //参数配置类
     public static class ParamConstants {
@@ -14,6 +16,12 @@ public class GlobalConstants {
     //SP管理类
     public static class SPConstants {
         public static String SETTING_PARAM = "setting_param";
+        
+        public static String APP_ID = "APP_ID";
+        public static String SDK_KEY = "SDK_KEY";
+        public static String SOFT_ID = "SOFT_ID";
+        public static String LOG_ID = "LOG_ID";
+        public static String FACE_SERVER = "FACE_SERVER";
     }
     
     //URL管理类

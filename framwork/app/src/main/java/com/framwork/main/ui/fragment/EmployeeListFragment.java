@@ -81,7 +81,7 @@ public class EmployeeListFragment extends BaseRefreshFragment<PersonListContract
         int t = mAdapter.getItemCount();
         if(t < total) {
             page = page + 1;
-            presenter.getEmployeesInfo(key, keyType, projectId, status, page, pageSize, true);
+            presenter.getEmployeesInfo(key, keyType, projectId, status, page, pageSize, false);
         }
         else {
             dissLoading();

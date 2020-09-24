@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
-                android:text="人员编辑"
+                android:text="人员采集"
                 android:textColor="@color/black_FF333333"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -135,7 +135,30 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/person_add_layout_info"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:background="@drawable/button_stoken_green"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_collect_green" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="采集信息"
+                android:textColor="@color/green_015F33"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/person_add_layout_pic"
             android:layout_width="match_parent"
@@ -165,6 +188,11 @@
                 android:src="@drawable/bg_userface" />
         </LinearLayout>
 
+        <TextureView
+            android:id="@+id/person_add_textureView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
         <LinearLayout
             android:id="@+id/person_add_layout_right"
             android:layout_width="wrap_content"
@@ -180,34 +208,12 @@
                 android:src="@drawable/icon_right" />
 
             <TextView
+                android:id="@+id/person_add_tv_result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="人证对比通过"
                 android:textColor="@color/green_015F33"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/person_add_layout_wrong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_wrong" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="人证对比失败，请重新采集信息"
-                android:textColor="@color/red_E51010"
                 android:textSize="15sp" />
         </LinearLayout>
 
@@ -717,8 +723,8 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
@@ -768,8 +774,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="16dp"
                 android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
 
@@ -1021,8 +1027,8 @@
                 android:id="@+id/person_add_layout_team_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
                 android:src="@drawable/icon_arrow_down" />
         </RelativeLayout>
